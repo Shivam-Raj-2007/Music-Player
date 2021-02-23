@@ -13,7 +13,7 @@ html {
 body{
   overflow-x: hidden;
   overflow-y: hidden;
-   background-color: #f6f6f6;
+  background-color: #f6f6f6;
 }
 
 .main_div {
@@ -96,4 +96,35 @@ img {
   box-shadow: 0 1rem 2rem 0.2rem rgba(0, 0, 0, 0.4);
 }
 
-.anime
+.Queue {
+  width: 15rem;
+  height: 19rem;
+  padding-left: 2rem;
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 225%;
+}
+
+p {
+  font-size: 225%;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+  .main_div {
+    background-color: #ffffff;
+  }
+  .music_container {
+    box-shadow: none;
+  }
+  .Queue {
+    display: none;
+  }
+}

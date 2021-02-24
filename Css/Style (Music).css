@@ -127,4 +127,7 @@ p {
   .Queue {
     display: none;
   }
+  body{
+    background-color: #ffffff;
+  }
 }

@@ -1,111 +1,133 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width , intial-scale=1.0">
-    <title>Music Player</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous">
-    <link rel="stylesheet" href="Css/Style (Music).css">
-  </head>
-  <body>
-    <div class="main_div">
-      <div class="music_container">
-          <h2 id="title">Dynamite</h2>
-          <h3 id="artist">BTS</h3>
-          <div class="img_container">
-          <img src="Image (Music)/Dynamite.png" alt="">
-          </div>
-          <audio src="Media (Music)/Dynamite.mp3">
-          </audio>
-          <div class="music_controls">
-            <i class="fas fa-backward" id="prev" title="Previous"></i>
-            <i class="fas fa-play main_button" id="play" title="Play"></i>
-            <i class="fas fa-forward" id="next" title="Next"></i>
-          </div>
-      </div>
-  </div>
-  <div class="Queue">
-    <h2>Queue</h2>
-    <p> Dynamite <br>
-    Shape Of You <br>
-    Parana </p>
-  </div>
 
-      <script>
-      const music = document.querySelector("audio");
-      const img = document.querySelector("img");
-      const play = document.getElementById("play");
-      const artist = document.getElementById("artist");
-      const title = document.getElementById("title");
-      const prev = document.getElementById("prev");
-      const next = document.getElementById("next");
+::before, ::after {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
 
-      const songs = [{
-        name: "Dynamite",
-        title: "Dynamite",
-        artist: "BTS",
-      },
-      {
-        name: "Shape Of You",
-        title: "Shape Of You",
-        artist: "Ed Sheeran",
-      },
-      {
-      name: "Parana",
-      title: "Parana",
-      artist: "Now United",
-    },
-   ];
+html {
+ font-size: 62.5%;
+ font-family: "Jost", sans-serif;
+}
 
-      let isPlaying = false;
+body{
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: #f6f6f6;
+}
 
-      // for play function
-        const playMusic = () => {
-        isPlaying = true;
-        music.play();
-        play.classList.replace("fa-play", "fa-pause");
-      };
+.main_div {
+  display: grid;
+  place-items: center;
+}
 
-      // for pause function
-        const pauseMusic = () => {
-        isPlaying = false;
-        music.pause();
-        play.classList.replace("fa-pause", "fa-play");
-      };
+.music_container {
+  width: 35rem;
+  height: 55rem;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
 
-      play.addEventListener("click", () => {
-        isPlaying ? pauseMusic() : playMusic();
-      });
+.music_container #title {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  word-spacing: 0.5rem;
+  color: #171717;
+  margin: 2rem 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+}
 
-      //changing the music data
+.music_container #artist {
+  color: #cccaca;
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  margin-bottom: 4rem;
+  font-weight: 600;
+}
 
-      const loadSong = (songs) => {
-        title.textContent = songs.title;
-        artist.textContent = songs.artist;
-        music.src = "Media (Music)/" + songs.name + ".mp3";
-        img.src = "Image (Music)/" + songs.name + ".png";
-      };
+.img_container {
+  margin: auto;
+}
 
-      songIndex = 0;
-      // loadSong(songs[0]);
+img {
+  border-radius: 15%;
+  box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.4);
+}
 
-      const nextSong = () => {
-        songIndex = (songIndex + 1) % songs.length;
-        loadSong(songs[songIndex]);
-        playMusic();
-      }
+.music_controls .fas{
+  color: #111111;
+  font-size: 2rem;
+  cursor: pointer;
+  filter: drop-shadow(0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.4));
+}
 
-      const prevSong = () => {
-        songIndex = (songIndex - 1 + songs.length) % songs.length;
-        loadSong(songs[songIndex]);
-        playMusic();
-      }
+.music_controls .fas:hover{
+  color: grey;
+}
 
-      next.addEventListener('click', nextSong);
-      prev.addEventListener('click', prevSong);
+.music_controls .main_button {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: #111;
+  color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+}
 
-      </script>
-  </body>
-</html>
+.music_controls {
+  width: 20rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.music_controls .fa-play:hover {
+  background-color: #f6f6f6;
+  color: #111;
+  box-shadow: 0 1rem 2rem 0.2rem rgba(0, 0, 0, 0.4);
+}
+
+.Queue {
+  width: 15rem;
+  height: 19rem;
+  padding-left: 2rem;
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 225%;
+}
+
+p {
+  font-size: 225%;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+  .main_div {
+    background-color: #ffffff;
+  }
+  .music_container {
+    box-shadow: none;
+  }
+  .Queue {
+    display: none;
+  }
+  body{
+    background-color: #ffffff;
+  }
+}
